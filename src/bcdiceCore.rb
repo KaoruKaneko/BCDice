@@ -366,9 +366,9 @@ class BCDice
 
     return unless  /(\d+)/ =~ @tnick
 
-    @canTapCard = (Regexp.last_match(1).to_i != 0)
+    @cardTrader.canTapCard = (Regexp.last_match(1).to_i != 0)
 
-    if @canTapCard
+    if @cardTrader.canTapCard
       sendMessageToChannels("タップ可能モードに変更しました")
     else
       sendMessageToChannels("タップ不可モードに変更しました")
