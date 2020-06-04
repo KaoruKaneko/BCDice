@@ -211,17 +211,13 @@ class BCDice
       # マスター登録
       setMaster()
 
-    when 'game'
-      # ゲーム設定
-      setGame()
-
     when /\Av(?:iew\s*)?mode\z/
       # 表示モード設定
       setDisplayMode()
 
     when 'upper'
       # 上方無限ロール閾値設定 0=Clear
-      setUpplerRollThreshold()
+      setUpperRollThreshold()
 
     when 'reroll'
       # 個数振り足しロール回数制限設定 0=無限
@@ -284,11 +280,6 @@ class BCDice
     sendMessageToChannels("#{@parent.master}さんをMasterに設定しました")
   end
 
-  def setGame()
-    messages = setGameByTitle(@tnick)
-    sendMessageToChannels(messages)
-  end
-
   def isMaster()
     return ((@nick_e == @parent.master) || (@parent.master == ""))
   end
@@ -304,15 +295,15 @@ class BCDice
     sendMessageToChannels("ViewMode#{@diceBot.sendMode}に変更しました")
   end
 
-  def setUpplerRollThreshold()
+  def setUpperRollThreshold()
     return unless  isMaster()
 
     return unless  /(\d+)/ =~ @tnick
 
-    @diceBot.upplerRollThreshold = Regexp.last_match(1).to_i
+    @diceBot.upperRollThreshold = Regexp.last_match(1).to_i
 
-    if @diceBot.upplerRollThreshold > 0
-      sendMessageToChannels("上方無限ロールを#{@diceBot.upplerRollThreshold}以上に設定しました")
+    if @diceBot.upperRollThreshold > 0
+      sendMessageToChannels("上方無限ロールを#{@diceBot.upperRollThreshold}以上に設定しました")
     else
       sendMessageToChannels("上方無限ロールの閾値設定を解除しました")
     end
