@@ -80,6 +80,7 @@ namespace :test do
       'src/test/test_dicebot_info_is_defined.rb',
       'src/test/testDiceBotLoaders.rb',
       'src/test/testDiceBotPrefixesCompatibility.rb',
+      'src/test/test_chain_table.rb',
       'src/test/test_command_parser.rb',
       'src/test/test_d66_table.rb',
       'src/test/test_srs_help_messages.rb',
